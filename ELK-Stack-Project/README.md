@@ -50,14 +50,14 @@ Machines within the network can only be accessed by SSH.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible |    Allowed IP Addresses                                   |
-|----------|---------------------|-----------------------------------------------------------|
-| Jump Box | Yes                 | Personal IP, 10.1.0.4, 10.0.0.0/16,                       |
-| Web1     | No                  | 10.0.0.4, 10.1.0.4                                        |
-| Web2     | No                  | 10.0.0.4, 10.1.0.4                                        |
-| Web3     | No                  | 10.0.0.4, 10.1.0.4                                        |
-| ElkStack | Yes                 | Personal IP, 10.1.0.4 (HTTP:5601), 10.0.0.4 (Jumpbox SSH) |
-
+| Name         | Publicly Accessible |    Allowed IP Addresses                                   |
+|--------------|---------------------|-----------------------------------------------------------|
+| Jump Box     | Yes, through SSH    | Personal IP, 10.1.0.4, 10.0.0.0/16,                       |
+| Web1         | No   HTTP Only      | 10.0.0.4, 10.1.0.4, Personal IP (port 80, Elk 5601)       |
+| Web2         | No   HTTP Only      | 10.0.0.4, 10.1.0.4,  Personal IP (port 80, Elk 5601)      |
+| Web3         | No   HTTP Only      | 10.0.0.4, 10.1.0.4,  Personal IP (port 80, Elk 5601)      |
+| ElkStack     | No   HTTP Only      | Personal IP, 10.1.0.4 (HTTP:5601), 10.0.0.4 (Jumpbox SSH) |
+|Load Balancer | No   HTTP Only      | Personal IP                                               |
 
 ### Elk Configuration
 
