@@ -34,16 +34,16 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
 | Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| Web VM 1 |Webserver |            |                  |
-| Web VM 2 |Webserver |            |                  |
-| Web VM 3 |Webserver |            |                  |
+| Web VM 1 |Webserver | 10.0.0.5   |                  |
+| Web VM 2 |Webserver | 10.0.0.6   |                  |
+| Web VM 3 |Webserver | 10.0.0.7   |                  |
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet. 
+The virtual machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box VM machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Personal workstation: 24.11.45.29
+- Personal workstation IP 24.11.45.xx
 
 Machines within the network can only be accessed by SSH.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
