@@ -31,12 +31,12 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| Web VM 1 |Webserver | 10.0.0.5   |                  |
-| Web VM 2 |Webserver | 10.0.0.6   |                  |
-| Web VM 3 |Webserver | 10.0.0.7   |                  |
+| Name     | Function | IP Address |    Operating System     |
+|----------|----------|------------|-------------------------|
+| Jump Box | Gateway  | 10.0.0.1   | Linux Ubuntu 18.04-LTS  |
+| Web1 VM  |Webserver | 10.0.0.5   | Linux Ubuntu 18.04-LTS  |
+| Web2 VM  |Webserver | 10.0.0.6   | Linux Ubuntu 18.04-LTS  |
+| Web3 VM  |Webserver | 10.0.0.7   | Linux Ubuntu 18.04-LTS  |
 
 ### Access Policies
 
@@ -50,7 +50,7 @@ Machines within the network can only be accessed by SSH.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses                                      |
+| Name     | Publicly Accessible |    Allowed IP Addresses                                   |
 |----------|---------------------|-----------------------------------------------------------|
 | Jump Box | Yes                 | Personal IP, 10.1.0.4, 10.0.0.0/16,                       |
 | Web1     | No                  | 10.0.0.4, 10.1.0.4                                        |
@@ -68,9 +68,18 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 - **Install docker.io**: The Docker engine, used for running containers.
 
-- **Install python3-pip** package manager used to install Python Software
+- **Install python3-pip** This is the package manager used to install Python Software
 
 - **Install docker** (this is the Docker Python pip module)
+
+- **Increase Virtual Memory** This increases virtual memory in the Elk container
+
+- **Download and Launch Elk Docker Container** This will download and start the sepb/elk:716 container on the Elk machine. Published ports include 5601:Kibana, 9200:Elastic Search, 5044:Filebeat.
+
+-**Enable Docker System Service on Boot** This tells Docker to enable on boot-up.
+
+
+
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
