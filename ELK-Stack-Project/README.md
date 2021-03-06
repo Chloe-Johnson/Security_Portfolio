@@ -50,21 +50,27 @@ Machines within the network can only be accessed by SSH.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name     | Publicly Accessible | Allowed IP Addresses |
-|----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Name     | Publicly Accessible | Allowed IP Addresses                                      |
+|----------|---------------------|-----------------------------------------------------------|
+| Jump Box | Yes                 | Personal IP, 10.1.0.4, 10.0.0.0/16,                       |
+| Web1     | No                  | 10.0.0.4, 10.1.0.4                                        |
+| Web2     | No                  | 10.0.0.4, 10.1.0.4                                        |
+| Web3     | No                  | 10.0.0.4, 10.1.0.4                                        |
+| ElkStack | Yes                 | Personal IP, 10.1.0.4 (HTTP:5601), 10.0.0.4 (Jumpbox SSH) |
+
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
 - _TODO: What is the main advantage of automating configuration with Ansible?_
 
-The playbook implements the following tasks:
-- Install docker.io: The Docker engine, used for running containers.
-- Install python3-pip package manager used to install Python Software
-- Install docker (this is the Docker Python pip module)
+*The playbook implements the following tasks:
+
+- **Install docker.io**: The Docker engine, used for running containers.
+
+- **Install python3-pip** package manager used to install Python Software
+
+- **Install docker** (this is the Docker Python pip module)
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
