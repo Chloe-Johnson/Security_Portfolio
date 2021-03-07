@@ -21,7 +21,7 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly _____, in addition to restricting _____ to the network.
+Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
 - _TODO: What aspect of security do load balancers protect? What is the advantage of a jump box?_
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
@@ -37,13 +37,14 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 | Web1 VM  |Webserver | 10.0.0.5   | Linux Ubuntu 18.04-LTS  |
 | Web2 VM  |Webserver | 10.0.0.6   | Linux Ubuntu 18.04-LTS  |
 | Web3 VM  |Webserver | 10.0.0.7   | Linux Ubuntu 18.04-LTS  |
+| ELKStack |Logging   | 10.1.0.4   | Linux Ubuntu 18.04-LTS  |
 
 ### Access Policies
 
 The virtual machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box VM machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Personal workstation IP 24.11.45.xx
+- My Personal workstation IP 24.11.45.xx through private SSH key for security
 
 Machines within the network can only be accessed by SSH.
 - _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
@@ -62,9 +63,9 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_
+Ansible is an 'agent-less' configuration management system that simplifies the setup process for many different network systems. Ansible only needs to be installed on the 'control machine' then by using SSH, the configuration can be quickly and precisly implimented on any target(s) machine. You don’t need to install any other software or firewall ports on the client systems you want to automate. You also don’t have to set up a separate management structure which makes Ansible automation a powerful and excellent choice for simplifing complex tasks.
 
-*The playbook implements the following tasks:
+*This playbook implements the following tasks:
 
 - **Install docker.io**: The Docker engine, used for running containers.
 
@@ -91,13 +92,13 @@ This ELK server is configured to monitor the following machines:
 - Web-2VM 10.0.0.6 
 - Web-3VM 10.0.0.7
 
-I have installed the following Beats on these machines:
+The following Beats have been installed on these machines:
 - Filebeat
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat- Monitors the log files on Web-1VM, Web-2VM, Web-3VM collects log events, and forwards them to Elasticsearch for indexing
-- Metricbeat- Installed on the ELK server to periodically collect metrics from the operating system and from services running on the server.
+- Metricbeat- Installed on the ELK server to periodically collect metrics from the operating system and information from the services running on the server.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -114,7 +115,7 @@ _TODO: Answer the following questions to fill in the blanks:_
 - Which file is the playbook? filebeat-playbook.yml 
 - Where do you copy it? on the ELK server at: /etc/ansible/roles/filebeat-playbook.yml
 - Which file do you update to make Ansible run the playbook on a specific machine? Ansible configuration file at :/etc/ansible/files/filebeat-config.yml 
-- How do I specify which machine to install the ELK server on versus which to install Filebeat on? In the configuration file on the ELK machineFilebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
+- How do I specify which machine to install the ELK server on versus which to install Filebeat on? In the configuration file on the ELK machine, Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
 - Which URL do you navigate to in order to check that the ELK server is running? http://10.1.0.4:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
