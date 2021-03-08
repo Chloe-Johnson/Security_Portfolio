@@ -129,7 +129,9 @@ Edit Filebeat Configuration File Template to include the IP address of ELK machi
    -Edit line 1806 to include ELK Ip & port- host: "10.1.0.4:5601"
 
 Create Ansible playbook installation instructions
+
 -run: nano /etc/ansible/roles/filebeat-playbook.yml
 
 Run Ansible playbook to install Filebeat on DVWA machines
+
 -run: ansible-playbook filebeat-playbook.yml
