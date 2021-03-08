@@ -6,7 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _ELK-Stack-Project/filebeat_playbook.yml_
+  [_ELK-Stack-Project/filebeat_playbook.yml_](ELK-Stack-Project/filebeat_playbook.yml)
 
 This document contains the following details:
 - Description of the Topologu
@@ -66,20 +66,17 @@ Ansible is an 'agent-less' configuration management system that simplifies the s
 
 *This playbook implements the following tasks:
 
-- **Install docker.io**: The Docker engine, used for running containers.
+- **Install docker.io** - The Docker engine, used for running containers.
 
-- **Install python3-pip** This is the package manager used to install Python Software
+- **Install python3-pip** - This is the package manager used to install Python Software
 
-- **Install docker** (this is the Docker Python pip module)
+- **Install docker** - (this is the Docker Python pip module)
 
-- **Increase Virtual Memory** This increases virtual memory in the Elk container
+- **Increase Virtual Memory** - This increases virtual memory in the Elk container
 
-- **Download and Launch Elk Docker Container** This will download and start the sepb/elk:716 container on the Elk machine. Published ports include 5601:Kibana, 9200:Elastic Search, 5044:Filebeat.
+- **Download and Launch Elk Docker Container** - This will download and start the sepb/elk:716 container on the Elk machine. Published ports include 5601:Kibana, 9200:Elastic Search, 5044:Filebeat.
 
--**Enable Docker System Service on Boot** This tells Docker to enable on boot-up.
-
-
-
+- **Enable Docker System Service on Boot** - This tells Docker to enable on boot-up.
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -87,16 +84,16 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- Web-1VM 10.0.0.5 
-- Web-2VM 10.0.0.6 
-- Web-3VM 10.0.0.7
+- Web_1VM 10.0.0.5 
+- Web_2VM 10.0.0.6 
+- Web_3VM 10.0.0.7
 
 The following Beats have been installed on these machines:
 - 'Filebeat 7.6.2'
 - 'Metricbeat 7.6.1'
 
 These Beats allow us to collect the following information from each machine:
-- Filebeat- Monitors the log files on Web-1VM, Web-2VM, Web-3VM collects log events, and forwards them to Elasticsearch for indexing
+- Filebeat- Monitors the Web-1VM, Web-2VM, Web-3VM machines and collects log events, systemwide file changes, and forwards them to Elasticsearch for indexing
 - Metricbeat- Installed on the ELK server to periodically collect metrics from the operating system and information from the services running on the server.
 
 ### Using the Playbook
@@ -111,11 +108,11 @@ SSH into the control node and follow the steps below:
    -Scroll to bottom and click on Verify Incoming Data
 
 _TODO: Answer the following questions to fill in the blanks:_
-- Which file is the playbook? filebeat-playbook.yml 
-- Where do you copy it? on the ELK server at: /etc/ansible/roles/filebeat-playbook.yml
-- Which file do you update to make Ansible run the playbook on a specific machine? Ansible configuration file at :/etc/ansible/files/filebeat-config.yml 
-- How do I specify which machine to install the ELK server on versus which to install Filebeat on? In the configuration file on the ELK machine, Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
-- Which URL do you navigate to in order to check that the ELK server is running? http://10.1.0.4:5601/app/kibana
+- *Which file is the playbook?* filebeat-playbook.yml 
+- *Where do you copy it?* on the ELK server at: /etc/ansible/roles/filebeat-playbook.yml
+- *Which file do you update to make Ansible run the playbook on a specific machine?* Ansible host file at /etc/ansible/hosts
+- *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* In the configuration file on the ELK machine, Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
+- *Which URL do you navigate to in order to check that the ELK server is running?* http://10.1.0.4:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
@@ -124,12 +121,10 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
     run: curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml
 
 Edit Filebeat Configuration File Template to include the IP address of ELK machine 
-- run: nano /etc/ansible/files/filebeat-config.yml
-   - Edit line 1106 to include ELK IP & port- hosts: ["10.1.0.4:9200"]
-   - Edit line 1806 to include ELK Ip & port- host: "10.1.0.4:5601"
-
+- run: **nano /etc/ansible/files/filebeat-config.yml**
+   - Edit line 1106 to include ELK IP & port- *hosts: ["10.1.0.4:9200"]*
+   - Edit line 1806 to include ELK Ip & port- *host: "10.1.0.4:5601"*
 Create Ansible playbook installation instructions
-- run: nano /etc/ansible/roles/filebeat-playbook.yml
-
+- run: **nano /etc/ansible/roles/filebeat-playbook.yml**
 Run Ansible playbook to install Filebeat on DVWA machines
-- run: ansible-playbook filebeat-playbook.yml
+- run: **ansible-playbook filebeat-playbook.yml**
