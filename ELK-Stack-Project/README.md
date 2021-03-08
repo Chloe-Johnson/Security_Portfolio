@@ -119,7 +119,7 @@ SSH into the control node and follow the steps below:
 - *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* 
 - This requires a Kibana endpoint configuration, on the configuration file (filebeat-config.yml) this looks like:
 - setup.kibana:
-  - host: "10.1.0.4:5601" Because we are connecting the webVM's to the ELK server, we need to edit the configuration file to include the ELK server's IP address. Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
+  - host: "10.1.0.4:5601" Because we are connecting the webVM's to the ELK server, we need to edit the configuration file to include the ELK server's IP address as the host.   
 - *Which URL do you navigate to in order to check that the ELK server is running?* http://10.1.0.4:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
