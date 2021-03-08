@@ -116,9 +116,10 @@ SSH into the control node and follow the steps below:
 - *Which file is the playbook?* filebeat-playbook.yml 
 - *Where do you copy it?* on the Ansible controle node at: /etc/ansible/roles/filebeat-playbook.yml
 - *Which file do you update to make Ansible run the playbook on a specific machine?* Ansible host file at /etc/ansible/hosts
-- *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* This requires a Kibana endpoint configuration, on the configuration file (filebeat-config.yml) this looks like:
-setup.kibana:
-  host: "10.1.0.4:5601" Because we are connecting the webVM's to the ELK server, we need to edit the configuration file to include the ELK server's IP address. Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
+- *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* 
+- This requires a Kibana endpoint configuration, on the configuration file (filebeat-config.yml) this looks like:
+- setup.kibana:
+  - host: "10.1.0.4:5601" Because we are connecting the webVM's to the ELK server, we need to edit the configuration file to include the ELK server's IP address. Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
 - *Which URL do you navigate to in order to check that the ELK server is running?* http://10.1.0.4:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
@@ -126,17 +127,17 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 **Installing FileBeat**
 
 - From the JumpBox, start and attach to Ansible Control Node:
-    **sudo docker start 02c5de3e7ef7**
-    **sudo docker attach 02c5de3e7ef7**
+   - **sudo docker start 02c5de3e7ef7**
+   - **sudo docker attach 02c5de3e7ef7**
 - Download template filebeat-config.yml to /etc/ansible/files
   - run: **curl       https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml**
 - Edit Filebeat Configuration File template to include the IP address of ELK machine and port numbers 
-- run: **nano /etc/ansible/files/filebeat-config.yml**
+ - run: **nano /etc/ansible/files/filebeat-config.yml**
    - Edit line 1106 to include ELK IP & port- *hosts: ["10.1.0.4:9200"]*
    - Edit line 1806 to include ELK Ip & port- *host: "10.1.0.4:5601"*
-Create Ansible playbook installation instructions
-- run: **nano /etc/ansible/roles/filebeat-playbook.yml**
-Run Ansible playbook to install Filebeat on DVWA machines
-- run: **ansible-playbook filebeat-playbook.yml**
+- Create Ansible playbook installation instructions
+  - run: **nano /etc/ansible/roles/filebeat-playbook.yml**
+- Run Ansible playbook to install Filebeat on DVWA machines
+  - run: **ansible-playbook filebeat-playbook.yml**
 - Navigate to *http://10.1.0.4:5601/app/kibana/home*
 - Click 
