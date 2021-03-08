@@ -47,10 +47,10 @@ The configuration details of each machine may be found below.
 
 The virtual machines on the internal network are not exposed to the public Internet. 
 
-Only the Jump Box VM machine can accept connections from the Internet. Access to this machine is only allowed from *My Personal workstation IP through private SSH key for security*
+Only the Jump Box VM machine can accept connections from the Internet. Access to this machine is only allowed from *My Personal workstation IP through private SSH key for security*.
 
 - The following Machines within the network can only be accessed from the JumpBox IP 10.0.0.4 through SSH.
-    -Web1, Web2, Web3 and ELK stack 
+    - Web1, Web2, Web3 and ELK stack. 
 
 
 A summary of the access policies in place can be found in the table below.
@@ -73,11 +73,11 @@ Ansible is an 'agent-less' configuration management system that simplifies the s
 
 - **Install docker.io** - The Docker engine, used for running containers.
 
-- **Install python3-pip** - This is the package manager used to install Python Software
+- **Install python3-pip** - This is the package manager used to install Python Software.
 
 - **Install docker** - (this is the Docker Python pip module)
 
-- **Increase Virtual Memory** - This increases virtual memory in the Elk container
+- **Increase Virtual Memory** - This increases virtual memory in the Elk container.
 
 - **Download and Launch Elk Docker Container** - This will download and start the sepb/elk:716 container on the Elk machine. Published ports include 5601:Kibana, 9200:Elastic Search, 5044:Filebeat.
 
@@ -98,7 +98,7 @@ The following Beats have been installed on these machines:
 - 'Metricbeat 7.6.1'
 
 These Beats allow us to collect the following information from each machine:
-- Filebeat- Monitors the Web-1VM, Web-2VM, Web-3VM machines and collects log events, systemwide file changes, and forwards them to Elasticsearch for indexing
+- Filebeat- Monitors the Web-1VM, Web-2VM, Web-3VM machines and collects log events, systemwide file changes, and forwards them to Elasticsearch for indexing.
 - Metricbeat- Periodically collect metrics from the operating system and information from the services running on the server.
 
 ### Using the Playbook
@@ -114,15 +114,20 @@ SSH into the control node and follow the steps below:
 
 ### FileBeat 
 - *Which file is the playbook?* filebeat-playbook.yml 
-- *Where do you copy it?* on the ELK server at: /etc/ansible/roles/filebeat-playbook.yml
+- *Where do you copy it?* on the Ansible controle node at: /etc/ansible/roles/filebeat-playbook.yml
 - *Which file do you update to make Ansible run the playbook on a specific machine?* Ansible host file at /etc/ansible/hosts
-- *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* In the configuration file on the ELK machine, Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
+- *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* This requires a Kibana endpoint configuration, on the configuration file (filebeat-config.yml) this looks like:
+setup.kibana:
+  host: "10.1.0.4:5601" Because we are connecting the webVM's to the ELK server, we need to edit the configuration file to include the ELK server's IP address. Filebeat is built to collect data about specific files on remote machines, it must be installed on the VMs you want to monitor   
 - *Which URL do you navigate to in order to check that the ELK server is running?* http://10.1.0.4:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
 **Installing FileBeat**
 
+- From the JumpBox, start and attach to Ansible Control Node:
+    **sudo docker start 02c5de3e7ef7**
+    **sudo docker attach 02c5de3e7ef7**
 - Download template filebeat-config.yml to /etc/ansible/files
   - run: **curl       https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml**
 - Edit Filebeat Configuration File template to include the IP address of ELK machine and port numbers 
