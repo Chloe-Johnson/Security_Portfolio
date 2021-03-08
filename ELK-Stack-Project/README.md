@@ -1,8 +1,9 @@
+
 ## Automated ELK Stack Deployment
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
+![Azure_Network_Diagram](https://user-images.githubusercontent.com/74564974/110273906-d9218880-7f8a-11eb-8888-c1f9c83419a6.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
