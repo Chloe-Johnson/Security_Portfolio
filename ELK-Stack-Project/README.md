@@ -84,7 +84,7 @@ Ansible is an 'agent-less' configuration management system that simplifies the s
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![The following screenshot displays](Security_Portfolio/ELK-Stack-Project/Screen Shot 2021-03-07 at 7.31.06 PM.png) the result of running `docker ps` after successfully configuring the ELK instance.
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
