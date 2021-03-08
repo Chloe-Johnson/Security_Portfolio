@@ -118,7 +118,7 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 
 **Installing FileBeat**
 
-- Download template filebeat-config.yml and filebeat-playbook.yml Files to /etc/ansible/files
+- Download template filebeat-config.yml to /etc/ansible/files
   - run: **curl       https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml**
 - Edit Filebeat Configuration File template to include the IP address of ELK machine and port numbers 
 - run: **nano /etc/ansible/files/filebeat-config.yml**
