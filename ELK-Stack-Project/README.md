@@ -117,10 +117,10 @@ _TODO: Answer the following questions to fill in the blanks:_
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
 **Installing FileBeat**
- -Command to download Filebeat Configuration File:
-    run: curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml
 
-Edit Filebeat Configuration File Template to include the IP address of ELK machine 
+- Download filebeat-config.yml and filebeat-playbook.yml Files to /etc/ansible/files
+- run: curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml
+- Edit Filebeat Configuration File Template to include the IP address of ELK machine 
 - run: **nano /etc/ansible/files/filebeat-config.yml**
    - Edit line 1106 to include ELK IP & port- *hosts: ["10.1.0.4:9200"]*
    - Edit line 1806 to include ELK Ip & port- *host: "10.1.0.4:5601"*
