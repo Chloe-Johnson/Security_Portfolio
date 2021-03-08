@@ -6,7 +6,7 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the Ansible Playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - _TODO: Enter the playbook file._
+  - _ELK-Stack-Project/filebeat_playbook.yml_
 
 This document contains the following details:
 - Description of the Topologu
@@ -29,7 +29,6 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - _TODO: What does Metricbeat record?_
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address |    Operating System     |
 |----------|----------|------------|-------------------------|
@@ -84,7 +83,7 @@ Ansible is an 'agent-less' configuration management system that simplifies the s
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![ELK_docker_ps.png](ELK-Stack-Project/ELK_docker_ps.png) the result of running `docker ps` after successfully configuring the ELK instance.
+![ELK_docker_ps.png](ELK-Stack-Project/ELK_docker_ps.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -93,8 +92,8 @@ This ELK server is configured to monitor the following machines:
 - Web-3VM 10.0.0.7
 
 The following Beats have been installed on these machines:
-- Filebeat
-- Metricbeat
+- 'Filebeat 7.6.2'
+- 'Metricbeat 7.6.1'
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat- Monitors the log files on Web-1VM, Web-2VM, Web-3VM collects log events, and forwards them to Elasticsearch for indexing
@@ -120,8 +119,9 @@ _TODO: Answer the following questions to fill in the blanks:_
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
-Command to download Filebeat Configuration File:
--run: curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml
+**Installing FileBeat**
+ -Command to download Filebeat Configuration File:
+    run: curl https://gist.githubusercontent.com/slape/5cc350109583af6cbe577bbcc0710c93/raw/eca603b72586fbe148c11f9c87bf96a63cb25760/Filebeat >> /etc/ansible/filebeat-config.yml
 
 Edit Filebeat Configuration File Template to include the IP address of ELK machine 
 -run: nano /etc/ansible/files/filebeat-config.yml
