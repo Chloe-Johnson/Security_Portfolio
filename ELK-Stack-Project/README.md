@@ -24,9 +24,9 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 Load balancing ensures that the application will be highly *available*, in addition to restricting *access* to the network.
 - **What aspect of security do load balancers protect?**
-    - Load balancers enable you to run highly available services behind a private IP address which is accessible only within a cloud service or Virtual Network (VNet), giving additional security on that endpoint.
+    - *Load balancers* enable you to run highly available services behind a private IP address which is accessible only within a cloud service or Virtual Network (VNet), giving additional security on that endpoint.
 - **What is the advantage of a jump box?** 
-    - Using a *JumpBox* in your network will allow controlled access and have the ability to manage devices in a seperate security zone. The JumpBox is hardened and provides controlled means of access to other VM's through RDP or (in this instance) SSH through port 22.
+    - Using a *JumpBox* in your network will allow controlled access and the ability to manage devices in a seperate security zone. The JumpBox is hardened and provides controlled means of access to other VM's through RDP, or SSH through port 22 (SSH was configured for this environment).
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the *data* and *system logs.*
 
@@ -37,7 +37,7 @@ The configuration details of each machine may be found below.
 
 | Name     | Function | IP Address |    Operating System     |
 |----------|----------|------------|-------------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux Ubuntu 18.04-LTS  |
+| Jump Box |Gateway   | 10.0.0.1   | Linux Ubuntu 18.04-LTS  |
 | Web1 VM  |Webserver | 10.0.0.5   | Linux Ubuntu 18.04-LTS  |
 | Web2 VM  |Webserver | 10.0.0.6   | Linux Ubuntu 18.04-LTS  |
 | Web3 VM  |Webserver | 10.0.0.7   | Linux Ubuntu 18.04-LTS  |
@@ -47,11 +47,11 @@ The configuration details of each machine may be found below.
 
 The virtual machines on the internal network are not exposed to the public Internet. 
 
-Only the Jump Box VM machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- My Personal workstation IP 24.11.45.xx through private SSH key for security
+Only the Jump Box VM machine can accept connections from the Internet. Access to this machine is only allowed from *My Personal workstation IP through private SSH key for security*
 
-Machines within the network can only be accessed by SSH.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+- The following Machines within the network can only be accessed from the JumpBox IP 10.0.0.4 through SSH.
+    -Web1, Web2, Web3 and ELK stack 
+
 
 A summary of the access policies in place can be found in the table below.
 
@@ -99,20 +99,20 @@ The following Beats have been installed on these machines:
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat- Monitors the Web-1VM, Web-2VM, Web-3VM machines and collects log events, systemwide file changes, and forwards them to Elasticsearch for indexing
-- Metricbeat- Installed on the ELK server to periodically collect metrics from the operating system and information from the services running on the server.
+- Metricbeat- Periodically collect metrics from the operating system and information from the services running on the server.
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+In order to use the playbook, you will need to have an *Ansible control node* already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the filebeat configuration file to /etc/ansible/files/filebeat-config.yml 
-- Update the /etc/ansible/hosts file to include [elk] 10.1.0.4 ansible_python_interpreter=/usr/bin/python3
-- Run the playbook, and navigate to ELK GUI http://10.1.0.4:5601/app/kibana to check that the installation worked as expected. 
+- Copy the filebeat configuration file to */etc/ansible/files/filebeat-config.yml* 
+- Update the /etc/ansible/hosts file to include *[elk] 10.1.0.4 ansible_python_interpreter=/usr/bin/python3*
+- Run the playbook, and navigate to ELK GUI *http://10.1.0.4:5601/app/kibana* to check that the installation worked as expected. 
    -Navigate to Module Status
    -Click on Check Data
    -Scroll to bottom and click on Verify Incoming Data
 
-_TODO: Answer the following questions to fill in the blanks:_
+### FileBeat 
 - *Which file is the playbook?* filebeat-playbook.yml 
 - *Where do you copy it?* on the ELK server at: /etc/ansible/roles/filebeat-playbook.yml
 - *Which file do you update to make Ansible run the playbook on a specific machine?* Ansible host file at /etc/ansible/hosts
