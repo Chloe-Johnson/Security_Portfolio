@@ -95,7 +95,7 @@ This ELK server is configured to monitor the following machines:
 - Web_3VM 10.0.0.7
 
 The following Beats have been installed on these machines:
-- `Filebeat 7.6.2'`
+- `Filebeat 7.6.2`
 - `Metricbeat 7.6.1`
 
 These Beats allow us to collect the following information from each machine:
@@ -140,4 +140,4 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 - Run Ansible playbook to install Filebeat on DVWA machines
   - run: **ansible-playbook filebeat-playbook.yml**
 - Navigate to *http://10.1.0.4:5601/app/kibana/home*
-- Click 
+- Click **Module Status** -Click on **Check Data** -Scroll to bottom and click on **Verify Incoming Data**
