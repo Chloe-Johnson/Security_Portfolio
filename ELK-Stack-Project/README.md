@@ -1,3 +1,4 @@
+# Security_Portfolio
 
 ## Automated ELK Stack Deployment
 
@@ -94,8 +95,8 @@ This ELK server is configured to monitor the following machines:
 - Web_3VM 10.0.0.7
 
 The following Beats have been installed on these machines:
-- 'Filebeat 7.6.2'
-- 'Metricbeat 7.6.1'
+- `Filebeat 7.6.2`
+- `Metricbeat 7.6.1`
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat- Monitors the Web-1VM, Web-2VM, Web-3VM machines and collects log events, systemwide file changes, and forwards them to Elasticsearch for indexing.
@@ -115,11 +116,10 @@ SSH into the control node and follow the steps below:
 ### FileBeat 
 - *Which file is the playbook?* filebeat-playbook.yml 
 - *Where do you copy it?* on the Ansible controle node at: /etc/ansible/roles/filebeat-playbook.yml
-- *Which file do you update to make Ansible run the playbook on a specific machine?* Ansible host file at /etc/ansible/hosts
+- *Which file do you update to make Ansible run the playbook on a specific machine?* Ansible host file at /etc/ansible/hosts to configure the groups and playbook file to push out to a specific ip.
 - *How do I specify which machine to install the ELK server on versus which to install Filebeat on?* 
-   - This requires a Kibana endpoint configuration, on the configuration file (filebeat-config.yml) this looks like:
-   - setup.kibana:
-     - host: "10.1.0.4:5601" Because we are connecting the webVM's to the ELK server, we need to edit the configuration file to include the ELK server's IP address as the host.   
+   - First, both [elk] and [webservers] IP addresses need to be added to the Ansible Control node host file /etc/ansible/hosts 
+   - Second, the playbook instructions will specify which machine to install to based on the host groups.
 - *Which URL do you navigate to in order to check that the ELK server is running?* http://10.1.0.4:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
@@ -140,4 +140,4 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 - Run Ansible playbook to install Filebeat on DVWA machines
   - run: **ansible-playbook filebeat-playbook.yml**
 - Navigate to *http://10.1.0.4:5601/app/kibana/home*
-- Click 
+- Click **Module Status** -Click on **Check Data** -Scroll to bottom and click on **Verify Incoming Data**
