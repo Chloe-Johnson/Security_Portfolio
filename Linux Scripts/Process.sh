@@ -7,5 +7,16 @@ then
     exit
 fi
 
-# Start str.sh script from user jack
-sudo -u jack /home/instructor/Documents/student_scripts/str.sh
+# Change apache2 port
+sed -i 's~\<Listen 80\>~Listen 8080~g' /etc/apache2/ports.conf
+
+# Start needed processes
+systemctl start vsftpd xinetd dovecot apache2 smbd
+
+# Set SUID bit for the `find` command
+chmod u+s $(which find)
+
+# Set user with erroneous UID
+sed -i 's~^adam:x:.*~adam:x:0:0:/home/adam:/bin/sh~g' /etc/passwd
+
+echo "Completed setup for day 3"
