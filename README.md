@@ -95,8 +95,8 @@ This ELK server is configured to monitor the following machines:
 - Web_3VM 10.0.0.7
 
 The following Beats have been installed on these machines:
-- 'Filebeat 7.6.2'
-- 'Metricbeat 7.6.1'
+'Filebeat 7.6.2'
+'Metricbeat 7.6.1'
 
 These Beats allow us to collect the following information from each machine:
 - Filebeat- Monitors the Web-1VM, Web-2VM, Web-3VM machines and collects log events, systemwide file changes, and forwards them to Elasticsearch for indexing.
