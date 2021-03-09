@@ -55,14 +55,14 @@ Only the Jump Box VM machine can accept connections from the Internet. Access to
 
 A summary of the access policies in place can be found in the table below.
 
-| Name          | Publicly Accessible |    Allowed IP Addresses                                   |
-|---------------|---------------------|-----------------------------------------------------------|
-| Jump Box      | Yes, through SSH    | Personal IP, 10.1.0.4, 10.0.0.0/16                        |
-| Load Balancer | HTTP Only           | Personal IP                                               |
-| Web1          | HTTP Only           | 10.0.0.4, 10.1.0.4,  Personal IP:port 80                  |
-| Web2          | HTTP Only           | 10.0.0.4, 10.1.0.4,  Personal IP:port 80                  |
-| Web3          | HTTP Only           | 10.0.0.4, 10.1.0.4,  Personal IP:port 80                  |
-| ElkStack      | HTTP Only           | Personal IP, 10.1.0.4 (HTTP:5601), 10.0.0.4 (Jumpbox SSH) |
+| Name          | Publicly Accessible |    Allowed IP Addresses                                          |
+|---------------|---------------------|------------------------------------------------------------------|
+| Jump Box      | Yes, through SSH    | Personal IP, 10.1.0.4, 10.0.0.0/16                               |
+| Load Balancer | HTTP Only           | Personal IP                                                      |
+| Web1          | HTTP Only           | 10.0.0.4, 10.1.0.4,  Personal Public IP:port 80                  |
+| Web2          | HTTP Only           | 10.0.0.4, 10.1.0.4,  Personal Public IP:port 80                  |
+| Web3          | HTTP Only           | 10.0.0.4, 10.1.0.4,  Personal Public IP:port 80                  |
+| ElkStack      | HTTP Only           | Personal IP, 10.1.0.4 (HTTP:5601), 10.0.0.4 (Jumpbox SSH)        |
 
 ### Elk Configuration
 
